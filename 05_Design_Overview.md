@@ -43,8 +43,6 @@ Polkadotの最後の重要な要素は、チェーン間通信です。パラチ
 
 5.5. Polkadot and Ethereum.
 
-Due to Ethereum’s Turing completeness, we expect there is ample opportunity for Polkadot and Ethereum to be interoperable with each other, at least within some easily deducible security bounds. In short, we envision that transactions from Polkadot can be signed by validators and then fed into Ethereum where they can be interpreted and enacted by a transaction-forwarding contract. In the other direction, we foresee the usage of specially formatted logs (events) coming from a “break-out contract” to allow a swift verification that a particular message should be forwarded.
-
 イーサリアムのチューリング完全性により、少なくとも容易に推測できるセキュリティの範囲内で、Polkadotとイーサリアムが相互運用できる十分な機会があると期待しています。つまり、Polkadot からのトランザクションはバリデータによって署名され、その後イーサリアムに送り込まれ、そこでトランザクション転送契約によって解釈・実行されることが想定される。また別の方向では、特定のメッセージが転送されるべきかどうかを迅速に検証できるように、「脱走契約」から来る特別な形式のログ（イベント）を使用することを想定している。
 
 5.5.1. Polkadot to Ethereum.
@@ -61,7 +59,7 @@ Due to Ethereum’s Turing completeness, we expect there is ample opportunity fo
 
 5.5.2. Ethereum to Polkadot.
 
-EthereumからPolkadotにトランザクションを転送するには、単純なログの概念を使用します。イーサリアムのコントラクトがトランザクションをPolkadotの特定のパラチェーンにディスパッチしたい場合、それは単に特別な「ブレイクアウトコントラクト」を呼び出す必要があります。ブレイクアウト・コントラクトは、必要とされる可能性のあるあらゆる支払いを受け取り、その存在がメルクル証明と対応するブロックのヘッダーが有効かつ正規であるという主張を通じて証明されるように、ロギング命令を発行する。
+EthereumからPolkadotにトランザクションを転送するには、単純なログの概念を使用します。イーサリアムのコントラクトがトランザクションをPolkadotの特定のパラチェーンにディスパッチしたい場合、それは単に特別な「ブレイクアウトコントラクト」を呼び出す必要があります。ブレイクアウト・コントラクトは、必要とされる可能性のあるあらゆる支払いを受け取り、その存在がマークル証明と対応するブロックのヘッダーが有効かつ正規であるという主張を通じて証明されるように、ロギング命令を発行する。
 
 後者の2つの条件のうち、有効性はおそらく、証明するのが最も簡単である。原理的には、証明を必要とする各ポルカドットノード（すなわち指定された検証者ノード）が、標準的なイーサリアムノードの完全に同期したインスタンスを実行していることが唯一の要件である。残念ながら、これ自体がかなり重い依存関係です。より軽量な方法としては、ブロック内のトランザクションを適切に実行し、（ブロック受信に含まれる）ログが有効であることを確認するために必要なイーサリアムの状態トライの部分のみを提供することによって、ヘッダーが正しく評価されたという単純な証明を使用することである。このような「SPV的」(SPVとは、ビットコインにおけるSimplified Payment Verificationのことで、クライアントが最長PoWチェーンの全ブロックヘッダーのコピーだけを保持しながら取引を検証する方法を説明するものである。)な証明は、まだ相当量の情報を必要とするかもしれません。便利なことに、それらは通常全く必要ないでしょう。ポルカドット内部のボンドシステムは、他の第三者（「fisherman」など、6.2.3参照）がヘッダーが無効であるという証明（特にステートルートや受領ルートが偽者であるという証明）を提出した場合に、ボンドを失ったリスクで、ボンドを受けた第三者がヘッダーを提出できるようにするものでしょう。
 
