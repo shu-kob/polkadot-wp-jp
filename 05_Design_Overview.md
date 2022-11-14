@@ -45,6 +45,8 @@ Polkadotの最後の重要な要素は、チェーン間通信です。パラチ
 
 Due to Ethereum’s Turing completeness, we expect there is ample opportunity for Polkadot and Ethereum to be interoperable with each other, at least within some easily deducible security bounds. In short, we envision that transactions from Polkadot can be signed by validators and then fed into Ethereum where they can be interpreted and enacted by a transaction-forwarding contract. In the other direction, we foresee the usage of specially formatted logs (events) coming from a “break-out contract” to allow a swift verification that a particular message should be forwarded.
 
+イーサリアムのチューリング完全性により、少なくとも容易に推測できるセキュリティの範囲内で、Polkadotとイーサリアムが相互運用できる十分な機会があると期待しています。つまり、Polkadot からのトランザクションはバリデータによって署名され、その後イーサリアムに送り込まれ、そこでトランザクション転送契約によって解釈・実行されることが想定される。また別の方向では、特定のメッセージが転送されるべきかどうかを迅速に検証できるように、「脱走契約」から来る特別な形式のログ（イベント）を使用することを想定している。
+
 5.5.1. Polkadot to Ethereum.
 
 承認投票メカニズムによって決定された利害関係者の集合から形成されるバリデーターを持つBFT合意メカニズムを選択することによって、我々は、頻繁に変更されない適度な数のバリデーターで安全な合意を得ることができます。144人のバリデータ、4秒のブロックタイム、900ブロックのファイナリティ（二重投票のような悪意のある行為を報告、処罰、修復することが可能）を持つシステムでは、ブロックの有効性はわずか97の署名（144の2/3＋1）、およびチャレンジが寄託されていない次の60分の検証期間によって合理的に証明されると考えることができる。
